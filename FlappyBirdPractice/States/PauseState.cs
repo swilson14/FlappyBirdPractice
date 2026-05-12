@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,14 @@ namespace FlappyBirdPractice.States
         {
             FlappyFont = flappyFont;
             MediumFont = mediumFont;
+        }
+
+        public override void Enter(params object[] args)
+        {
+            if (MediaPlayer.State == MediaState.Playing)
+            {
+                MediaPlayer.Pause();
+            }
         }
 
         public override void Update(GameTime gameTime, KeyboardInfo keyboard, MouseInfo mouse)
